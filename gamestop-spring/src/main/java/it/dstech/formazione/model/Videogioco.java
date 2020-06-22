@@ -5,23 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 public class Videogioco {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titolo;
 	private Pegi pegi;
 	private double prezzo;
-	private String categoria;
-	
+	private Categoria categoria;
+
 	public Videogioco() {
-		
+
 	}
 
-	public Videogioco(Long id, String titolo, Pegi pegi, double prezzo, String categoria) {
+	public Videogioco(Long id, String titolo, Pegi pegi, double prezzo, Categoria categoria) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
@@ -62,14 +61,12 @@ public class Videogioco {
 		this.prezzo = prezzo;
 	}
 
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-	
 
 }

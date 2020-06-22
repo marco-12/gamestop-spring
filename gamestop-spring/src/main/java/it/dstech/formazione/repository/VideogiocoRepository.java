@@ -11,18 +11,22 @@ import it.dstech.formazione.model.Videogioco;
 
 public interface VideogiocoRepository extends CrudRepository<Videogioco, Long>{
 	
-	@Query(value = "SELECT v FROM Videogioco v WHERE v.nome LIKE '%' || :keyword || '%'"
+	@Query(value = "SELECT v FROM Videogioco v WHERE v.titolo LIKE '%' || :keyword || '%'"
 			+ " OR v.pegi LIKE '%' || :keyword || '%'"
 			+ " OR v.prezzo LIKE '%' || :keyword || '%'"
 			+ " OR v.categoria LIKE '%' || :keyword || '%'")
 	public List<Videogioco> search(@Param("keyword") String keyword);
 	
+	@Query("select v from Videogioco v order by prezzo ASC")
 	public List<Videogioco> orderByPrezzo();
 	
-	public List<Videogioco> orderByNome();
+	@Query("select v from Videogioco v order by titolo ASC")
+	public List<Videogioco> orderByTitolo();
 	
+	@Query("select v from Videogioco v order by categoria ASC")
 	public List<Videogioco> orderByCategoria();
 	
+	@Query("select v from Videogioco v order by classificazione ASC")
 	public List<Videogioco> orderByClassificazione();
 
 }

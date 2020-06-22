@@ -20,7 +20,7 @@ public class VideogiocoController {
 	@Autowired
 	private VideogiocoService videogiocoService;
 	
-	@RequestMapping("/")
+	@RequestMapping(value= {"/", "/home"})
 	public ModelAndView home() {
 		List<Videogioco> listaVideogiochi = videogiocoService.listAll();
 		ModelAndView mav = new ModelAndView("index");
@@ -28,21 +28,21 @@ public class VideogiocoController {
 		return mav;
 	}
 	
-	@RequestMapping("/new")
-	public String newCustomerForm(Map<String, Object> model) {
+	@RequestMapping("/nuovoVideogioco")
+	public String nuovoVideogioco(Map<String, Object> model) {
 		Videogioco videogioco = new Videogioco();
 		model.put("videogioco", videogioco);
 		return "new_videogioco";
 	}
 	
 	@RequestMapping(value = "/saveVideogioco", method = RequestMethod.POST)
-	public String saveAllenatore(@ModelAttribute("videogioco") Videogioco videogioco) {
+	public String salvaVideogioco(@ModelAttribute("videogioco") Videogioco videogioco) {
 		videogiocoService.save(videogioco);
-		return "redirect:/";
+		return "redirect:/home";
 	}
 	
 	@RequestMapping("/modificaVideogioco")
-	public ModelAndView editCustomerForm(@RequestParam long id) {
+	public ModelAndView modificaVideogioco(@RequestParam long id) {
 		ModelAndView mav = new ModelAndView("edit_videogioco");
 		Videogioco videogioco = videogiocoService.get(id);
 		mav.addObject("videogioco", videogioco);
@@ -50,9 +50,9 @@ public class VideogiocoController {
 	}
 	
 	@RequestMapping("/cancellaVideogioco")
-	public String deleteDigimonForm(@RequestParam long id) {
+	public String cancellaVideogioco(@RequestParam long id) {
 		videogiocoService.delete(id);
-		return "redirect:/";		
+		return "redirect:/home";		
 	}
 	
 	@RequestMapping("/search")
@@ -65,34 +65,32 @@ public class VideogiocoController {
 	
 	
 	@RequestMapping(value = "/ordina", method = RequestMethod.POST)
-	public ModelAndView sort(@RequestParam("ordina") String command, Map<String, Object> model) {
+	public ModelAndView ordina(@RequestParam("command") String command, Map<String, Object> model) {
+		ModelAndView view = new ModelAndView("visualizza_lista_ordinata");
+		Videogioco videogioco = new Videogioco();
+		model.put("videogioco", videogioco);
 		switch (Integer.parseInt(command)) {
 		case 1: {
-			ModelAndView view = new ModelAndView("visualizza_lista_ordinata");
-			Videogioco videogioco = new Videogioco();
-			model.put("videogioco", videogioco);
-			view.addObject("listaVideogiochi", videogiocoService.orderByNome());
+			view.addObject("listaVideogiochi", videogiocoService.orderByTitolo());
+			view.addObject("messaggio", "Videogiochi ordinati per titolo");
 			return view;
 		}
 		case 2: {
-			ModelAndView view = new ModelAndView("visualizza_lista_ordinata");
-			Videogioco videogioco = new Videogioco();
 			model.put("videogioco", videogioco);
 			view.addObject("listaVideogiochi", videogiocoService.orderByPrezzo());
+			view.addObject("messaggio", "Videogiochi ordinati per prezzo");
 			return view;
 		}
 		case 3: {
-			ModelAndView view = new ModelAndView("visualizza_lista_ordinata");
-			Videogioco videogioco = new Videogioco();
 			model.put("videogioco", videogioco);
 			view.addObject("listaVideogiochi", videogiocoService.orderByCategoria());
+			view.addObject("messaggio", "Videogiochi ordinati per categoria");
 			return view;
 		}
 		case 4: {
-			ModelAndView view = new ModelAndView("visualizza_lista_ordinata");
-			Videogioco videogioco = new Videogioco();
 			model.put("videogioco", videogioco);
 			view.addObject("listaVideogiochi", videogiocoService.orderByClassificazione());
+			view.addObject("messaggio", "Videogiochi ordinati per Classificazione");
 			return view;
 		}
 		}

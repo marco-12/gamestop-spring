@@ -39,8 +39,8 @@ public class VideogiocoService {
 		return repo.orderByPrezzo();
 	}
 	
-	public List<Videogioco> orderByNome() {
-		return repo.orderByNome();
+	public List<Videogioco> orderByTitolo() {
+		return repo.orderByTitolo();
 	}
 	
 	public List<Videogioco> orderByCategoria() {
