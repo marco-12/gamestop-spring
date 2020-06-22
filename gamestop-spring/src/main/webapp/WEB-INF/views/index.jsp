@@ -63,9 +63,9 @@
 		<form method="post" action="ordina">
 			<INPUT type="radio" name="command" value="1" /> Ordina per Titolo <br>
 			<INPUT type="radio" name="command" value="2" /> Ordina per Prezzo <br>
-			<INPUT type="radio" name="command" value="3" /> Ordina per Categoria
-			<br> <INPUT type="radio" name="command" value="4" /> Ordina per
-			clasificazione <br> <INPUT type="submit" value="Conferma" />
+			<INPUT type="radio" name="command" value="3" /> Ordina per Categoria <br> 
+			<INPUT type="radio" name="command" value="4" /> Ordina per Classificazione <br> 
+			<INPUT type="submit" value="Conferma" />
 		</form>
 	</div>
 </body>
