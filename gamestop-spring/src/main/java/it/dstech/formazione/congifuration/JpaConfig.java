@@ -10,13 +10,13 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"it.dstech.digimonspring"})
+@EnableJpaRepositories(basePackages = {"it.dstech.formazione"})
 @EnableTransactionManagement
 public class JpaConfig {
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory() {
         LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-        factoryBean.setPersistenceUnitName("DigimonDB");
+        factoryBean.setPersistenceUnitName("GamestopDB");
          
         return factoryBean;
     }
