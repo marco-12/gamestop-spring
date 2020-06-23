@@ -35,20 +35,36 @@ public class VideogiocoService {
 		return repo.search(keyword);
 	}
 	
-	public List<Videogioco> orderByPrezzo() {
-		return repo.orderByPrezzo();
-	}
+//	public List<Videogioco> orderByPrezzo() {
+//		return repo.orderByPrezzo();
+//	}
+//	
+//	public List<Videogioco> orderByTitolo() {
+//		return repo.orderByTitolo();
+//	}
+//	
+//	public List<Videogioco> orderByCategoria() {
+//		return repo.orderByCategoria();
+//	}
+//	
+//	public List<Videogioco> orderByClassificazione() {
+//		return repo.orderByClassificazione();
+//	}
 	
-	public List<Videogioco> orderByTitolo() {
-		return repo.orderByTitolo();
-	}
-	
-	public List<Videogioco> orderByCategoria() {
-		return repo.orderByCategoria();
-	}
-	
-	public List<Videogioco> orderByClassificazione() {
-		return repo.orderByClassificazione();
-	}
+	 public List<Videogioco> orderByTitoloAsc() {
+	        return repo.findByOrderByTitoloAsc();
+	    }
+	 
+	 public List<Videogioco> orderByCategoriaAsc() {
+	        return repo.findByOrderByCategoriaAsc();
+	    }
+	 
+	 public List<Videogioco> orderByPrezzoAsc() {
+	        return repo.findByOrderByPrezzoAsc();
+	    }
+	 
+	 public List<Videogioco> orderByClassificazioneAsc() {
+	        return repo.findByOrderByPegiAsc();
+	    }
 	
 }

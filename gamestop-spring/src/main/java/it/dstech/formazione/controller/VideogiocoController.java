@@ -68,22 +68,22 @@ public class VideogiocoController {
 		ModelAndView mav = new ModelAndView("visualizza_lista_ordinata");
 		switch (Integer.parseInt(command)) {
 		case 1: {
-			mav.addObject("listaVideogiochi", videogiocoService.orderByTitolo());
+			mav.addObject("listaVideogiochi", videogiocoService.orderByTitoloAsc());
 			mav.addObject("messaggio", "Videogiochi ordinati per titolo");
 			return mav;
 		}
 		case 2: {
-			mav.addObject("listaVideogiochi", videogiocoService.orderByPrezzo());
+			mav.addObject("listaVideogiochi", videogiocoService.orderByCategoriaAsc());
 			mav.addObject("messaggio", "Videogiochi ordinati per prezzo");
 			return mav;
 		}
 		case 3: {
-			mav.addObject("listaVideogiochi", videogiocoService.orderByCategoria());
+			mav.addObject("listaVideogiochi", videogiocoService.orderByPrezzoAsc());
 			mav.addObject("messaggio", "Videogiochi ordinati per categoria");
 			return mav;
 		}
 		case 4: {
-			mav.addObject("listaVideogiochi", videogiocoService.orderByClassificazione());
+			mav.addObject("listaVideogiochi", videogiocoService.orderByClassificazioneAsc());
 			mav.addObject("messaggio", "Videogiochi ordinati per classificazione");
 			return mav;
 		}

@@ -1,6 +1,8 @@
 package it.dstech.formazione.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +14,10 @@ public class Videogioco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titolo;
+	@Enumerated(EnumType.STRING)
 	private Pegi pegi;
 	private double prezzo;
+	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
 
 	public Videogioco() {

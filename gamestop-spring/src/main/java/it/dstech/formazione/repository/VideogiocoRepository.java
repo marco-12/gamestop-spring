@@ -17,16 +17,24 @@ public interface VideogiocoRepository extends CrudRepository<Videogioco, Long>{
 			+ " OR v.categoria LIKE '%' || :keyword || '%'")
 	public List<Videogioco> search(@Param("keyword") String keyword);
 	
-	@Query("select v from Videogioco v order by prezzo ASC")
-	public List<Videogioco> orderByPrezzo();
+//	@Query("select v from Videogioco v order by prezzo ASC")
+//	public List<Videogioco> orderByPrezzo();
+//	
+//	@Query("select v from Videogioco v order by titolo ASC")
+//	public List<Videogioco> orderByTitolo();
+//	
+//	@Query("select v from Videogioco v order by categoria ASC")
+//	public List<Videogioco> orderByCategoria();
+//	
+//	@Query("select v from Videogioco v order by pegi ASC")
+//	public List<Videogioco> orderByClassificazione();
 	
-	@Query("select v from Videogioco v order by titolo ASC")
-	public List<Videogioco> orderByTitolo();
+	public List<Videogioco>findByOrderByTitoloAsc(); 
 	
-	@Query("select v from Videogioco v order by categoria ASC")
-	public List<Videogioco> orderByCategoria();
+	public List<Videogioco>findByOrderByCategoriaAsc();
 	
-	@Query("select v from Videogioco v order by pegi ASC")
-	public List<Videogioco> orderByClassificazione();
+	public List<Videogioco>findByOrderByPrezzoAsc();
+	
+	public List<Videogioco>findByOrderByPegiAsc();
 
 }
