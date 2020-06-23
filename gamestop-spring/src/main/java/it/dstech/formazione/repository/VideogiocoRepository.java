@@ -26,7 +26,7 @@ public interface VideogiocoRepository extends CrudRepository<Videogioco, Long>{
 	@Query("select v from Videogioco v order by categoria ASC")
 	public List<Videogioco> orderByCategoria();
 	
-	@Query("select v from Videogioco v order by classificazione ASC")
+	@Query("select v from Videogioco v order by pegi ASC")
 	public List<Videogioco> orderByClassificazione();
 
 }
